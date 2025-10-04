@@ -1,0 +1,19 @@
+<odoo>
+  <record id="demo_employee_1" model="hr.employee">
+    <field name="name">Demo Employee</field>
+  </record>
+
+  <record id="demo_employee_2" model="hr.employee">
+    <field name="name">Demo Manager</field>
+  </record>
+
+  <record id="demo_expense_1" model="expense.record">
+    <field name="employee_id" ref="demo_employee_1"/>
+    <field name="date">2025-09-01</field>
+    <field name="category">travel</field>
+    <field name="amount">1200.0</field>
+    <field name="description">Taxi fare from station to client</field>
+    <field name="state">submitted</field>
+    <field name="sequence">EXP/2025/001</field>
+  </record>
+</odoo>

@@ -1,0 +1,20 @@
+{
+    "name": "Enterprise Expense Management",
+    "version": "1.0.0",
+    "summary": "Expense submission, approval workflow and dashboard",
+    "description": "Expense management module for enterprises — submit expenses, manager & finance approvals, reimbursements and basic reports.",
+    "author": "Hackathon Team",
+    "website": "https://example.com",
+    "category": "Accounting/Expense",
+    "depends": ["base", "mail", "account", "hr"],
+    "data": [
+        "security/security.xml",
+        "security/ir.model.access.csv",
+        "views/expense_menus.xml",
+        "views/expense_views.xml",
+        "data/expense_demo_data.xml",
+    ],
+    "installable": True,
+    "application": True,
+    "license": "LGPL-3",
+}

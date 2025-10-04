@@ -1,0 +1,58 @@
+<odoo>
+  <record id="view_expense_tree" model="ir.ui.view">
+    <field name="name">expense.record.tree</field>
+    <field name="model">expense.record</</field>
+    <field name="arch" type="xml">
+      <tree string="Expenses">
+        <field name="sequence"/>
+        <field name="employee_id"/>
+        <field name="category"/>
+        <field name="amount"/>
+        <field name="date"/>
+        <field name="state"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_expense_form" model="ir.ui.view">
+    <field name="name">expense.record.form</field>
+    <field name="model">expense.record</field>
+    <field name="arch" type="xml">
+      <form string="Expense Record">
+        <sheet>
+          <group>
+            <field name="sequence" readonly="1"/>
+            <field name="employee_id"/>
+            <field name="date"/>
+            <field name="category"/>
+            <field name="amount"/>
+            <field name="currency_id"/>
+            <field name="receipt" filename="receipt_name"/>
+            <field name="description"/>
+          </group>
+          <group string="Workflow">
+            <field name="state"/>
+            <field name="manager_id"/>
+            <field name="finance_id"/>
+            <field name="journal_entry_id"/>
+          </group>
+          <footer>
+            <button name="action_submit" string="Submit" type="object" class="btn-primary" attrs="{ 'invisible': [('state','!=','draft')] }"/>
+            <button name="action_manager_approve" string="Manager Approve" type="object" attrs="{ 'invisible': [('state','!=','submitted')] }"/>
+            <button name="action_finance_approve" string="Finance Approve" type="object" attrs="{ 'invisible': [('state','!=','manager_approved')] }"/>
+            <button name="action_reimburse" string="Reimburse" type="object" attrs="{ 'invisible': [('state','!=','finance_approved')] }"/>
+            <button name="action_reject" string="Reject" type="object" class="btn-danger" attrs="{ 'invisible': [('state','in', ['rejected','reimbursed'])] }"/>
+          </footer>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_expense_records" model="ir.actions.act_window">
+    <field name="name">Expenses</field>
+    <field name="res_model">expense.record</field>
+    <field name="view_mode">kanban,tree,form</field>
+  </record>
+
+  <menuitem id="menu_expense_action" name="All Expenses" parent="menu_expense_management" action="action_expense_records"/>
+</odoo>

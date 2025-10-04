@@ -1,0 +1,4 @@
+<odoo>
+  <menuitem id="menu_expense_root" name="Expenses" sequence="10"/>
+  <menuitem id="menu_expense_management" name="Expense Management" parent="menu_expense_root" sequence="1"/>
+</odoo>
